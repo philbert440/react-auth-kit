@@ -176,10 +176,8 @@ class TokenObject {
           authToken: authToken,
           authTokenType: authTokenType,
           isUsingRefreshToken: this.isUsingRefreshToken,
-          refreshToken: this.isUsingRefreshToken && !!refreshToken ?
-            refreshToken : null,
-          refreshTokenExpireAt: this.isUsingRefreshToken &&
-          !!refreshTokenTime ? new Date(refreshTokenTime):null,
+          refreshToken: refreshToken,
+          refreshTokenExpireAt: new Date(refreshTokenTime),
           expireAt: expiresAt,
           authState: authState,
         };

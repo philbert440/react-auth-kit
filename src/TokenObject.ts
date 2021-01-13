@@ -14,8 +14,8 @@ class TokenObject {
   private readonly cookieSecure?: boolean
   private readonly authStorageTypeName: string;
   private readonly authStorageType: 'cookie' | 'localstorage';
-  private readonly refreshTokenName: string | undefined;
-  private readonly refreshTokenTimeName: string | null;
+  private readonly refreshTokenName: string;
+  private readonly refreshTokenTimeName: string;
   private readonly isUsingRefreshToken: boolean;
 
   /**
@@ -102,13 +102,8 @@ class TokenObject {
     const authTokenType = Cookies.get(this.authStorageTypeName);
     const authTokenTime = Cookies.get(this.authTimeStorageName);
     const stateCookie = Cookies.get(this.stateStorageName);
-
-    const refreshToken = this.isUsingRefreshToken &&
-    this.refreshTokenName != null ? Cookies.get(this.refreshTokenName) : null;
-
-    const refreshTokenTime = this.isUsingRefreshToken &&
-    this.refreshTokenTimeName != null ?
-      Cookies.get(this.refreshTokenTimeName) : null;
+    const refreshToken = Cookies.get(this.refreshTokenName);
+    const refreshTokenTime = Cookies.get(this.refreshTokenTimeName);
 
     return this.checkTokenExist(
         authToken,

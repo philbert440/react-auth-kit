@@ -134,8 +134,14 @@ class TokenObject {
     const authTokenType = localStorage.getItem(this.authStorageTypeName);
     const authTokenTime = localStorage.getItem(this.authTimeStorageName);
     const stateCookie = localStorage.getItem(this.stateStorageName);
-    const refreshToken = localStorage.getItem(this.refreshTokenName);
-    const refreshTokenTime = localStorage.getItem(this.refreshTokenTimeName);
+
+    const refreshToken = this.isUsingRefreshToken &&
+    this.refreshTokenName != null ?
+      localStorage.getItem(this.refreshTokenName) : null;
+
+    const refreshTokenTime = this.isUsingRefreshToken &&
+    this.refreshTokenTimeName != null ?
+      localStorage.getItem(this.refreshTokenTimeName) : null;
 
     return this.checkTokenExist(
         authToken,

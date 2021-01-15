@@ -99,9 +99,9 @@ function useAuth():
         'So you have to implement refresh token feature from ' +
         '\'AuthProvider\' before using it.');
     }
-    const expTime = new Date(new Date().getTime() + expiresIn * 60 * 1000);
+    const expTime = new Date(new Date().getTime() + expiresIn);
     const refreshTokenExpireAt = !!refreshTokenExpireIn ?
-      new Date(new Date().getTime() + refreshTokenExpireIn * 60 * 1000) : null;
+      new Date(new Date().getTime() + refreshTokenExpireIn) : null;
     try {
       if (c) {
         c.setAuthState((prevState) => ({

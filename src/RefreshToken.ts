@@ -85,7 +85,7 @@ class RefreshToken {
    * @param expiresIn
    */
   updateRefreshToken(refreshToken:string, expiresIn: number) {
-    const expireAt = new Date(new Date().getTime() + expiresIn);
+    const expireAt = new Date(new Date().getTime() + expiresIn * 1000);
     this.context.setAuthState((prevState) =>
       ({
         ...prevState,
@@ -112,7 +112,7 @@ class RefreshToken {
     }
 
     if (expiresIn !== undefined) {
-      const expireAt = new Date(new Date().getTime() + expiresIn);
+      const expireAt = new Date(new Date().getTime() + expiresIn * 1000);
       Object.assign(o, {expireAt: expireAt});
     }
 

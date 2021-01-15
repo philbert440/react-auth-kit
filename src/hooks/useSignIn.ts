@@ -34,9 +34,9 @@ function useSignIn():(signInConfig: signInFunctionParams) => boolean {
         '\'AuthProvider\' before using it.');
     }
 
-    const expTime = new Date(new Date().getTime() + expiresIn);
+    const expTime = new Date(new Date().getTime() + expiresIn * 1000);
     const refreshTokenExpireAt = !!refreshTokenExpireIn ?
-      new Date(new Date().getTime() + refreshTokenExpireIn) : null;
+      new Date(new Date().getTime() + refreshTokenExpireIn * 1000) : null;
 
     try {
       if (context) {
